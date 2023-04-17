@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Flurl;
 
 namespace FinanceBackend.Services;
@@ -9,39 +10,44 @@ using FinanceBackend.Models;
 
 public class YahooFinanceApiClient
 {
-    const string BaseUrl = "https://query1.finance.yahoo.com/v7/finance/quote";
+    private const string BaseUrl = "https://yahoo-finance127.p.rapidapi.com/finance-analytics/";
+    private readonly string _apiKey;
+    private readonly string _apiHost;
 
-    readonly string _apiKey;
-
-    public YahooFinanceApiClient(string apiKey)
+    public YahooFinanceApiClient(string apiKey, string apiHost)
     {
         _apiKey = apiKey;
+        _apiHost = apiHost;
     }
 
-    public async Task<List<Company>> FetchFinancialDataForSymbolsAsync(List<string> symbols)
+    public async Task<List<Company>> FetchFinancialDataForSymbolsAsync(IEnumerable<string> symbols)
     {
-        var response = await BaseUrl
-            .SetQueryParam("symbols", string.Join(",", symbols))
-            .SetQueryParam("apiKey", _apiKey)
-            .GetJsonAsync<YahooFinanceApiResponse>();
-
+        var httpClient = new HttpClient();
         var companies = new List<Company>();
 
-        foreach (var result in response.QuoteResponse.Result)
+        foreach (var symbol in symbols)
         {
-            var company = new Company
+            var request = new HttpRequestMessage
             {
-                Name = result.LongName,
-                Symbol = result.Symbol,
-                Date = DateTime.UtcNow.Date,
-                Open = result.RegularMarketOpen,
-                High = result.RegularMarketDayHigh,
-                Low = result.RegularMarketDayLow,
-                Close = result.RegularMarketPreviousClose,
-                Volume = result.RegularMarketVolume
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(BaseUrl + symbol),
+                Headers =
+                {
+                    { "X-RapidAPI-Key", _apiKey },
+                    { "X-RapidAPI-Host", _apiHost },
+                },
             };
 
-            companies.Add(company);
+            using var response = await httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            var company = JsonSerializer.Deserialize<Company>(jsonResponse);
+
+            if (company != null)
+            {
+                companies.Add(company);
+            }
         }
 
         return companies;

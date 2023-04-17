@@ -13,9 +13,10 @@ public class SummariesController : ControllerBase
     public SummariesController(IConfiguration configuration)
     {
         var yahooFinanceApiKey = configuration["AppSettings:YahooFinanceApiKey"];
+        var yahooFinanceApiHost = configuration["AppSettings:YahooFinanceApiHost"];
         var chatGPTApiKey = configuration["AppSettings:OpenAIApiKey"];
 
-        _yahooFinanceApiClient = new YahooFinanceApiClient(yahooFinanceApiKey);
+        _yahooFinanceApiClient = new YahooFinanceApiClient(yahooFinanceApiKey, yahooFinanceApiHost);
         _chatGPTApiClient = new ChatGPTApiClient(chatGPTApiKey);
     }
 

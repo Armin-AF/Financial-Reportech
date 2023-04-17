@@ -10,8 +10,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3f529a07-27ef-4777-8f6b-2634ee1f0b74" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FinanceBackend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FinanceBackend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceBackend/Controllers/CompaniesController.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/FinanceBackend/Controllers/SummariesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/Controllers/SummariesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinanceBackend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceBackend/Services/YahooFinanceApiClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/Services/YahooFinanceApiClient.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FinanceBackend/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +88,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1681712576863</updated>
-      <workItem from="1681712577960" duration="3824000" />
+      <workItem from="1681712577960" duration="4387000" />
     </task>
     <servers />
   </component>
