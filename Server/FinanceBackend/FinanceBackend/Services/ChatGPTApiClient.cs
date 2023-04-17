@@ -1,3 +1,5 @@
+using System.Text;
+using System.Text.Json;
 using FinanceBackend.Models;
 using Flurl.Http;
 
@@ -5,38 +7,49 @@ namespace FinanceBackend.Services;
 
 public class ChatGPTApiClient
 {
-    private const string BaseUrl = "https://api.openai.com/v1/engines/davinci-codex/completions";
+     const string BaseUrl = "https://openai80.p.rapidapi.com/chat/completions";
+     readonly string _apiKey;
+     readonly string _apiHost;
 
-    private readonly string _apiKey;
-
-    public ChatGPTApiClient(string apiKey)
+    public ChatGPTApiClient(string apiKey, string apiHost)
     {
         _apiKey = apiKey;
+        _apiHost = apiHost;
     }
 
     public async Task<string> GenerateSummaryAsync(Company company)
     {
-        var prompt = $"Generate a brief summary of the financial performance for {company.Name} ({company.Symbol}) on {company.Date:MMMM dd, yyyy}. The company opened at {company.Open}, reached a high of {company.High}, a low of {company.Low}, and closed at {company.Close}. The trading volume was {company.Volume}.";
+        var httpClient = new HttpClient();
 
-        var requestBody = new
+        var request = new HttpRequestMessage
         {
-            prompt = prompt,
-            max_tokens = 50,
-            n = 1,
-            stop = string.Empty,
-            temperature = 0.7
+            Method = HttpMethod.Post,
+            RequestUri = new Uri(BaseUrl),
+            Headers =
+            {
+                { "X-RapidAPI-Key", _apiKey },
+                { "X-RapidAPI-Host", _apiHost },
+            },
+            Content = new StringContent(JsonSerializer.Serialize(new
+            {
+                model = "gpt-3.5-turbo",
+                messages = new[]
+                {
+                    new
+                    {
+                        role = "user",
+                        content = $"Summarize the financial performance of {company.Name} with the symbol {company.Symbol}."
+                    }
+                }
+            }), Encoding.UTF8, "application/json")
         };
 
-        var response = await BaseUrl
-            .WithHeader("Authorization", $"Bearer {_apiKey}")
-            .PostJsonAsync(requestBody)
-            .ReceiveJson<ChatGPTApiResponse>();
+        using var response = await httpClient.SendAsync(request);
+        response.EnsureSuccessStatusCode();
 
-        if (response?.Choices.Count > 0)
-        {
-            return response.Choices[0].Text.Trim();
-        }
+        var jsonResponse = await response.Content.ReadAsStringAsync();
+        var responseObject = JsonSerializer.Deserialize<ChatGPTApiResponse>(jsonResponse);
 
-        return string.Empty;
+        return responseObject?.Choices[0].Text?.Trim() ?? "Failed to generate a summary.";
     }
 }

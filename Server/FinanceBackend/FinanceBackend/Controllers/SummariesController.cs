@@ -7,17 +7,18 @@ namespace FinanceBackend.Controllers;
 [Route("api/[controller]")]
 public class SummariesController : ControllerBase
 {
-     readonly YahooFinanceApiClient _yahooFinanceApiClient;
-     readonly ChatGPTApiClient _chatGPTApiClient;
+    private readonly YahooFinanceApiClient _yahooFinanceApiClient;
+    private readonly ChatGPTApiClient _chatGPTApiClient;
 
     public SummariesController(IConfiguration configuration)
     {
         var yahooFinanceApiKey = configuration["AppSettings:YahooFinanceApiKey"];
         var yahooFinanceApiHost = configuration["AppSettings:YahooFinanceApiHost"];
-        var chatGPTApiKey = configuration["AppSettings:OpenAIApiKey"];
+        var chatGPTApiKey = configuration["AppSettings:ChatGPTApiKey"];
+        var chatGPTApiHost = configuration["AppSettings:ChatGPTApiHost"];
 
         _yahooFinanceApiClient = new YahooFinanceApiClient(yahooFinanceApiKey, yahooFinanceApiHost);
-        _chatGPTApiClient = new ChatGPTApiClient(chatGPTApiKey);
+        _chatGPTApiClient = new ChatGPTApiClient(chatGPTApiKey, chatGPTApiHost);
     }
 
     [HttpGet("generate-summary/{symbol}")]
