@@ -53,14 +53,12 @@ public class SummariesController : ControllerBase
      }
      
      [HttpGet("financial-data/{symbol}")]
-     public async Task<ActionResult<List<Company>>> GetFinancialData(string symbol)
+     public async Task<ActionResult<List<Company>>> GetFinancialData(string symbol, DateTime startDate, DateTime endDate)
      {
          try
          {
              _logger.LogInformation($"Fetching financial data for symbol: {symbol}");
-             var symbols = new List<string> { "AAPL" };
-             var startDate = new DateTime(2022, 1, 1);
-             var endDate = new DateTime(2022, 12, 31);
+             var symbols = new List<string> { symbol };
              var companies = await _yhFinanceApiClient.FetchFinancialDataForSymbolsAsync(symbols, startDate, endDate);
 
              if (companies.Count == 0)
