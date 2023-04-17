@@ -1,21 +1,33 @@
+using FinanceBackend.Services;
+using Microsoft.Extensions.DependencyInjection;
+
+// ...
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
-// Add services to the container.
-builder.Services.AddSingleton(builder.Configuration);
-builder.Services.AddControllers();
+// Add YH Finance API and ChatGPT API clients as services
+builder.Services.AddSingleton(provider =>
+{
+    var config = provider.GetRequiredService<IConfiguration>();
+    return new YHFinanceApiClient(config["AppSettings:YHFinanceApiKey"], config["AppSettings:YHFinanceApiHost"]);
+});
+builder.Services.AddSingleton(provider =>
+{
+    var config = provider.GetRequiredService<IConfiguration>();
+    return new ChatGPTApiClient(config["AppSettings:ChatGPTApiKey"], config["AppSettings:ChatGPTApiHost"]);
+});
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment()){
+if (app.Environment.IsDevelopment())
+{
     app.UseSwagger();
     app.UseSwaggerUI();
 }

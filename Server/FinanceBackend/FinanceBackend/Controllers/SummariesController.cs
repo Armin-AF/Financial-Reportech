@@ -7,17 +7,17 @@ namespace FinanceBackend.Controllers;
 [Route("api/[controller]")]
 public class SummariesController : ControllerBase
 {
-    private readonly YahooFinanceApiClient _yahooFinanceApiClient;
-    private readonly ChatGPTApiClient _chatGPTApiClient;
+     readonly YHFinanceApiClient _yhFinanceApiClient;
+     readonly ChatGPTApiClient _chatGPTApiClient;
 
     public SummariesController(IConfiguration configuration)
     {
-        var yahooFinanceApiKey = configuration["AppSettings:YahooFinanceApiKey"];
-        var yahooFinanceApiHost = configuration["AppSettings:YahooFinanceApiHost"];
+        var yhFinanceApiKey = configuration["AppSettings:YHFinanceApiKey"];
+        var yhFinanceApiHost = configuration["AppSettings:YHFinanceApiHost"];
         var chatGPTApiKey = configuration["AppSettings:ChatGPTApiKey"];
         var chatGPTApiHost = configuration["AppSettings:ChatGPTApiHost"];
 
-        _yahooFinanceApiClient = new YahooFinanceApiClient(yahooFinanceApiKey, yahooFinanceApiHost);
+        _yhFinanceApiClient = new YHFinanceApiClient(yhFinanceApiKey, yhFinanceApiHost);
         _chatGPTApiClient = new ChatGPTApiClient(chatGPTApiKey, chatGPTApiHost);
     }
 
@@ -26,7 +26,7 @@ public class SummariesController : ControllerBase
     {
         // Fetch the financial data for the given symbol
         var symbols = new List<string> { symbol };
-        var companies = await _yahooFinanceApiClient.FetchFinancialDataForSymbolsAsync(symbols);
+        var companies = await _yhFinanceApiClient.FetchFinancialDataForSymbolsAsync(symbols);
 
         if (companies.Count == 0)
         {
