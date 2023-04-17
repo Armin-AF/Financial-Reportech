@@ -51,6 +51,7 @@ public class SummariesController : ControllerBase
              return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while generating the summary.");
          }
      }
+     
 
      [HttpGet("financial-data/{symbol}")]
      public async Task<ActionResult<List<Company>>> GetFinancialData(string symbol, DateTime startDate,
