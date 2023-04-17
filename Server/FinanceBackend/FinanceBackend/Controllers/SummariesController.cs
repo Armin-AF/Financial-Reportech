@@ -27,7 +27,9 @@ public class SummariesController : ControllerBase
          {
              _logger.LogInformation($"Fetching financial data for symbol: {symbol}");
              var symbols = new List<string> { symbol };
-             var companies = await _yhFinanceApiClient.FetchFinancialDataForSymbolsAsync(symbols);
+             var startDate = DateTime.UtcNow.AddDays(-7);
+             var endDate = DateTime.UtcNow;
+             var companies = await _yhFinanceApiClient.FetchFinancialDataForSymbolsAsync(symbols, startDate, endDate);
 
              if (companies.Count == 0)
              {

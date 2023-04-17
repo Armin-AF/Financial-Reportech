@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using FinanceBackend.Models;
@@ -29,7 +30,7 @@ public class ChatGPTApiClient
                 {"X-RapidAPI-Host", _apiHost},
             },
             Content = new StringContent(JsonSerializer.Serialize(new{
-                model = "gpt-3.5-turbo",
+                model = "gpt-3.5-turbo-0301",
                 messages = new[]{
                     new{
                         role = "user",
@@ -39,6 +40,8 @@ public class ChatGPTApiClient
                 }
             }), Encoding.UTF8, "application/json")
         };
+
+        request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
         try{
             using var response = await _httpClient.SendAsync(request);
@@ -55,5 +58,4 @@ public class ChatGPTApiClient
             throw;
         }
     }
-
 }
