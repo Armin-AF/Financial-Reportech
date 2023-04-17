@@ -51,29 +51,26 @@ public class SummariesController : ControllerBase
              return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while generating the summary.");
          }
      }
-     
+
      [HttpGet("financial-data/{symbol}")]
-     public async Task<ActionResult<List<Company>>> GetFinancialData(string symbol, DateTime startDate, DateTime endDate)
-     {
-         try
-         {
+     public async Task<ActionResult<List<Company>>> GetFinancialData(string symbol, DateTime startDate,
+         DateTime endDate){
+         try{
              _logger.LogInformation($"Fetching financial data for symbol: {symbol}");
-             var symbols = new List<string> { symbol };
+             var symbols = new List<string>{symbol};
              var companies = await _yhFinanceApiClient.FetchFinancialDataForSymbolsAsync(symbols, startDate, endDate);
 
-             if (companies.Count == 0)
-             {
-                 _logger.LogWarning($"Financial data for symbol '{symbol}' not found.");
-                 return NotFound($"Financial data for symbol '{symbol}' not found.");
-             }
+             if (companies.Count != 0) return Ok(companies);
+             _logger.LogWarning($"Financial data for symbol '{symbol}' not found.");
+             return NotFound($"Financial data for symbol '{symbol}' not found.");
 
-             return Ok(companies);
          }
-         catch (Exception ex)
-         {
+
+         catch (Exception ex){
              _logger.LogError(ex, $"Error fetching financial data for symbol: {symbol}");
-             return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while fetching the financial data.");
+             return StatusCode(StatusCodes.Status500InternalServerError,
+                 "An error occurred while fetching the financial data.");
          }
-     }
 
+     }
 }
