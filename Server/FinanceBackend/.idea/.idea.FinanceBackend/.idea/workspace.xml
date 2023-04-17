@@ -9,9 +9,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f529a07-27ef-4777-8f6b-2634ee1f0b74" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/FinanceBackend/Models/Company.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FinanceBackend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FinanceBackend/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FinanceBackend/Services/YahooFinanceApiClient.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FinanceBackend/FinanceBackend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/FinanceBackend.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceBackend/obj/Debug/net7.0/FinanceBackend.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/obj/Debug/net7.0/FinanceBackend.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceBackend/obj/Debug/net7.0/FinanceBackend.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/obj/Debug/net7.0/FinanceBackend.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceBackend/obj/FinanceBackend.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/obj/FinanceBackend.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceBackend/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceBackend/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceBackend/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceBackend/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1681712576863</updated>
-      <workItem from="1681712577960" duration="417000" />
+      <workItem from="1681712577960" duration="774000" />
     </task>
     <servers />
   </component>
