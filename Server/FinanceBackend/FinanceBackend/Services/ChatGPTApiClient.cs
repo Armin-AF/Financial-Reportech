@@ -7,49 +7,53 @@ namespace FinanceBackend.Services;
 
 public class ChatGPTApiClient
 {
-     const string BaseUrl = "https://openai80.p.rapidapi.com/chat/completions";
-     readonly string _apiKey;
-     readonly string _apiHost;
+    const string BaseUrl = "https://openai80.p.rapidapi.com/chat/completions";
+    readonly string _apiKey;
+    readonly string _apiHost;
+    private readonly HttpClient _httpClient;
+    private readonly ILogger<ChatGPTApiClient> _logger;
 
-    public ChatGPTApiClient(string apiKey, string apiHost)
-    {
+    public ChatGPTApiClient(string apiKey, string apiHost, HttpClient httpClient, ILogger<ChatGPTApiClient> logger){
         _apiKey = apiKey;
         _apiHost = apiHost;
+        _httpClient = httpClient;
+        _logger = logger;
     }
 
-    public async Task<string> GenerateSummaryAsync(Company company)
-    {
-        var httpClient = new HttpClient();
-
-        var request = new HttpRequestMessage
-        {
+    public async Task<string> GenerateSummaryAsync(Company company){
+        var request = new HttpRequestMessage{
             Method = HttpMethod.Post,
             RequestUri = new Uri(BaseUrl),
-            Headers =
-            {
-                { "X-RapidAPI-Key", _apiKey },
-                { "X-RapidAPI-Host", _apiHost },
+            Headers ={
+                {"X-RapidAPI-Key", _apiKey},
+                {"X-RapidAPI-Host", _apiHost},
             },
-            Content = new StringContent(JsonSerializer.Serialize(new
-            {
+            Content = new StringContent(JsonSerializer.Serialize(new{
                 model = "gpt-3.5-turbo",
-                messages = new[]
-                {
-                    new
-                    {
+                messages = new[]{
+                    new{
                         role = "user",
-                        content = $"Summarize the financial performance of {company.Name} with the symbol {company.Symbol}."
+                        content =
+                            $"Summarize the financial performance of {company.Name} with the symbol {company.Symbol}."
                     }
                 }
             }), Encoding.UTF8, "application/json")
         };
 
-        using var response = await httpClient.SendAsync(request);
-        response.EnsureSuccessStatusCode();
+        try{
+            using var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
 
-        var jsonResponse = await response.Content.ReadAsStringAsync();
-        var responseObject = JsonSerializer.Deserialize<ChatGPTApiResponse>(jsonResponse);
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            _logger.LogInformation($"ChatGPT API response: {jsonResponse}");
+            var responseObject = JsonSerializer.Deserialize<ChatGPTApiResponse>(jsonResponse);
 
-        return responseObject?.Choices[0].Text?.Trim() ?? "Failed to generate a summary.";
+            return responseObject?.Choices[0].Text?.Trim() ?? "Failed to generate a summary.";
+        }
+        catch (Exception ex){
+            _logger.LogError(ex, "Error while generating summary with ChatGPT API");
+            throw;
+        }
     }
+
 }
