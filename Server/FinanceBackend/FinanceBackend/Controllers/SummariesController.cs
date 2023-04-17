@@ -10,10 +10,10 @@ public class SummariesController : ControllerBase
      readonly YahooFinanceApiClient _yahooFinanceApiClient;
      readonly ChatGPTApiClient _chatGPTApiClient;
 
-    public SummariesController()
+    public SummariesController(IConfiguration configuration)
     {
-        var yahooFinanceApiKey = "key";
-        var chatGPTApiKey = "key";
+        var yahooFinanceApiKey = configuration["AppSettings:YahooFinanceApiKey"];
+        var chatGPTApiKey = configuration["AppSettings:OpenAIApiKey"];
 
         _yahooFinanceApiClient = new YahooFinanceApiClient(yahooFinanceApiKey);
         _chatGPTApiClient = new ChatGPTApiClient(chatGPTApiKey);
