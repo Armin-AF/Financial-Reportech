@@ -1,4 +1,6 @@
-namespace FinanceBackend.Services;
+using FinanceBackend.Services;
+
+namespace FinanceBackend.Models;
 
 public class QuoteResponse
 {

@@ -17,7 +17,7 @@ builder.Logging.AddConsole();
 builder.Services.AddSingleton(provider =>
 {
     var config = provider.GetRequiredService<IConfiguration>();
-    return new YHFinanceApiClient(config["AppSettings:YHFinanceApiKey"], config["AppSettings:YHFinanceApiHost"]);
+    return new YHFinanceApiClient(config["AppSettings:YHFinanceApiKey"] ?? throw new InvalidOperationException(), config["AppSettings:YHFinanceApiHost"] ?? throw new InvalidOperationException());
 });
 
 builder.Services.AddSingleton<ChatGPTApiClient>(sp =>

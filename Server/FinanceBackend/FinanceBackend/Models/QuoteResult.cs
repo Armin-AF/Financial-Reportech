@@ -1,9 +1,9 @@
-namespace FinanceBackend.Services;
+namespace FinanceBackend.Models;
 
-public class QuoteResult
+public abstract class QuoteResult
 {
-    public string Symbol { get; set; }
-    public string LongName { get; set; }
+    public string Symbol { get; set; } = null!;
+    public string? LongName { get; set; }
     public decimal RegularMarketOpen { get; set; }
     public decimal RegularMarketDayHigh { get; set; }
     public decimal RegularMarketDayLow { get; set; }

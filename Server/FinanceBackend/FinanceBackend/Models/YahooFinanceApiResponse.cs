@@ -1,4 +1,6 @@
-namespace FinanceBackend.Services;
+using FinanceBackend.Models;
+
+namespace FinanceBackend.Models;
 
 public class YahooFinanceApiResponse
 {

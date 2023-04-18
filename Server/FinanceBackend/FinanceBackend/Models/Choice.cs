@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace FinanceBackend.Services;
+namespace FinanceBackend.Models;
 
 public class Choice
 {

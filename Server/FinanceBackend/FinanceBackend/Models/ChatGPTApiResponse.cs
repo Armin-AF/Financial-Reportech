@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
+using FinanceBackend.Services;
 
-namespace FinanceBackend.Services;
+namespace FinanceBackend.Models;
 
 public class ChatGPTApiResponse
 {

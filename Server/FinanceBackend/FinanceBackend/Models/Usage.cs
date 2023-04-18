@@ -1,8 +1,8 @@
 using System.Text.Json.Serialization;
 
-namespace FinanceBackend.Services;
+namespace FinanceBackend.Models;
 
-public class Usage
+public abstract class Usage
 {
     [JsonPropertyName("prompt_tokens")]
     public int PromptTokens { get; set; }

@@ -9,5 +9,5 @@ public class HistoricalData
     public decimal Close { get; set; }
     public decimal AdjClose { get; set; }
     public long Volume { get; set; }
-    public string Symbol { get; set; }
+    public string Symbol { get; set; } = null!;
 }

@@ -53,7 +53,7 @@ public class SummariesController : ControllerBase
      }
      
 
-     [HttpGet("financial-data/{symbol}")]
+     [HttpGet("financial-data/{symbol}/{startDate}/{endDate}")]
      public async Task<ActionResult<List<Company>>> GetFinancialData(string symbol, DateTime startDate,
          DateTime endDate){
          try{
@@ -74,4 +74,5 @@ public class SummariesController : ControllerBase
          }
 
      }
+
 }
