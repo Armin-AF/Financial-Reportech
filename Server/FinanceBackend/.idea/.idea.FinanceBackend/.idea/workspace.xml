@@ -10,16 +10,13 @@
   <component name="ChangeListManager">
     <list default="true" id="3f529a07-27ef-4777-8f6b-2634ee1f0b74" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FinanceBackend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FinanceBackend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinanceBackend/Controllers/SummariesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/Controllers/SummariesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinanceBackend/Models/ChatGPTApiResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/Models/ChatGPTApiResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinanceBackend/Models/Choice.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/Models/Choice.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinanceBackend/Models/Company.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/Models/Company.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinanceBackend/Models/HistoricalData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/Models/HistoricalData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinanceBackend/Models/QuoteResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/Models/QuoteResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinanceBackend/Models/QuoteResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/Models/QuoteResult.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinanceBackend/Models/Usage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/Models/Usage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinanceBackend/Models/YahooFinanceApiResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/Models/YahooFinanceApiResponse.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FinanceBackend/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceBackend/bin/Debug/net7.0/FinanceBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/bin/Debug/net7.0/FinanceBackend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceBackend/bin/Debug/net7.0/FinanceBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/bin/Debug/net7.0/FinanceBackend.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceBackend/obj/Debug/net7.0/FinanceBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/obj/Debug/net7.0/FinanceBackend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceBackend/obj/Debug/net7.0/FinanceBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/obj/Debug/net7.0/FinanceBackend.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceBackend/obj/Debug/net7.0/ref/FinanceBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/obj/Debug/net7.0/ref/FinanceBackend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinanceBackend/obj/Debug/net7.0/refint/FinanceBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FinanceBackend/obj/Debug/net7.0/refint/FinanceBackend.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,26 +31,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.editor",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "/Users/rminafa/Library/Application Support/JetBrains/Rider2023.1/resharper-host/DecompilerCache",
-      "/Users/rminafa/Library/Application Support/JetBrains/Rider2023.1/resharper-host/SourcesCache",
-      "/Users/rminafa/.local/share/Symbols/src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/Users/rminafa/Library/Application Support/JetBrains/Rider2023.1/resharper-host/DecompilerCache&quot;,
+      &quot;/Users/rminafa/Library/Application Support/JetBrains/Rider2023.1/resharper-host/SourcesCache&quot;,
+      &quot;/Users/rminafa/.local/share/Symbols/src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.FinanceBackend: http">
     <configuration name="FinanceBackend: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/FinanceBackend/FinanceBackend.csproj" />
@@ -94,7 +91,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1681712576863</updated>
-      <workItem from="1681712577960" duration="13658000" />
+      <workItem from="1681712577960" duration="17730000" />
+      <workItem from="1682061327604" duration="604000" />
+      <workItem from="1682318081118" duration="342000" />
     </task>
     <servers />
   </component>

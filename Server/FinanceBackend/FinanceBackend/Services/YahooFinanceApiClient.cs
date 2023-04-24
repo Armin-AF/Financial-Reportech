@@ -1,12 +1,12 @@
 using System.Text.Json;
 using Flurl;
-
-namespace FinanceBackend.Services;
-
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Flurl.Http;
 using FinanceBackend.Models;
+
+namespace FinanceBackend.Services;
+
 
 public class YahooFinanceApiClient
 {
